@@ -32,4 +32,4 @@ def generate_pwd(path: str, input_chars: list, generated: str, n: int, current_p
                      generated=new_generated,
                      n=n,
                      current_pwd_length=current_pwd_length - 1
-        )
+                     )
