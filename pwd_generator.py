@@ -3,12 +3,7 @@ import sys
 from archive_checker import check_pwd, check_archive
 
 
-def crack_password(path: str) -> None:
-    """
-    Password cracker for length of maximum 10 alphanumerical characters.
-    :param path: File path
-    :return: None
-    """
+def crack_password(path: str):
     check_archive(path)
 
     all_chars = string.ascii_letters + string.digits
@@ -21,24 +16,10 @@ def crack_password(path: str) -> None:
 
 
 def generate_pwd(path: str, input_chars: list, generated: str, n: int, current_pwd_length: int):
-    """
-    Recursive password generator based on brute force algorithm which generates passwords starting from lowercase
-    characters, to uppercase characters to digits.
-    The algorithm builds character by character all the possibilities of a password. If password can open the given zip
-    file, the recursive function stops the execution
-    :param path: File path
-    :param input_chars:  Lower & Upper characters & digits
-    :param generated: Generated password which is recursively built
-    :param n: How many characters to be used from input_chars string
-    :param current_pwd_length: Current Password length, ranging from 1 to maximum 10
-    :return:
-    """
     if current_pwd_length == 0:
-        print(f'Trying..... {generated}')
         checking = check_pwd(path=path, pwd=generated)
         if checking is not None:
-            print(f'\nPASSWORD FOUND - \'{generated}\'')
-            print('[Stopping Brute-Force Algorithm]')
+            print(f'PASSWORD FOUND - {generated}')
 
             sys.exit(1)
         return
